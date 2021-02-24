@@ -2,8 +2,11 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource, Api, request
 from celery import Celery
 from flask_cors import CORS, cross_origin
+import os
+
 app = Flask(__name__)
 api = Api(app)
+port = int(os.environ.get("PORT", 5000))
 CORS(app)
 simple_app = Celery('worker', broker='redis://redis:6379/0', backend='redis://redis:6379/0')
 
@@ -62,4 +65,4 @@ def task_result(task_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0',port=port)
