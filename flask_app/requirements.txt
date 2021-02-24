@@ -1,0 +1,4 @@
+Flask
+celery[redis]
+flask_cors
+flask_restful

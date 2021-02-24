@@ -1,0 +1,24 @@
+#mkdir build-compiler-image
+
+#cat <<EOF >build-compiler-image/Dockerfile
+
+#FROM ubuntu:latest
+#USER root
+#WORKDIR /worker
+#ADD . /worker
+#RUN apt-get update -y && apt-get -y install clang && apt-get install -y python3-pip python3-dev 
+#RUN pip3 install --upgrade pip
+#RUN pip3 install -r requirements.txt
+FROM python:3
+WORKDIR /worker
+ADD . /worker
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+
+ADD util-cpp util-cpp
+ADD util-python util-python
+ADD util-c util-c
+ADD util-java util-java
+ADD util-javascript util-javascript
+ENTRYPOINT celery -A tasks worker --loglevel=info
+#EOF
