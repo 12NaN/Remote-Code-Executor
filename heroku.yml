@@ -1,5 +1,5 @@
 build:
   docker:
-    client: ./client/Dockerfile
-    flask_app: ./flask_app/Dockerfile
-    worker: ./worker/Dockerfile
+    client: ./client/Dockerfile.web
+    flask_app: ./flask_app/Dockerfile.flask_app
+    worker: ./worker/Dockerfile.worker
