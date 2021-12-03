@@ -134,9 +134,7 @@ function Editor(props) {
         // Send code
 
         if(runState == "Cancel"){
-            //if((typeof id) === 'string'){
-                console.log("FUCCCCCCCCCCCCCCCCCCCCCCK");
-                
+            //if((typeof id) === 'string'){                
                 console.log(runState);
                 console.log(`About to cancel: ${id}`);
                 if(id !== "undefined"){
